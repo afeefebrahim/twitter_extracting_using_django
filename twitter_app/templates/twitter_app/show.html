@@ -1,0 +1,8 @@
+      {% extends "twitter_app/base.html" %}
+        {% block title %}Welcome to twitter!{% endblock %}
+        {% block body_block %}
+    	<h1>{{twitter_id}}</h1></br>
+    	{%for tw in tweets%}
+    	 * {{tw}}<br>
+    	  {%endfor%}
+    {% endblock %}

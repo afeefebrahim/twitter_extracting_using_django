@@ -1,0 +1,33 @@
+{% extends "twitter_app/base.html" %}
+        {% block title %}Welcome to twitter!{% endblock %}
+        {% block body_block %}
+   <h3> welocme to twitter API</h3>
+   <div class="hero-unit">
+    <form method="post" id = "post_form">
+    {%csrf_token%}
+    <input type="text" class= 'form-control'  id = 'twitter_id' placeholder='Twitter ID'>   
+    <input class="btn btn-primary" type = "submit" id='submit'>
+    </form>
+</div>
+
+    <script>
+    	$("#post_form").on('submit', function(e){
+              e.preventDefault();
+              console.log("submitt the function")
+              create_post()
+    	});
+        function create_post(){
+            console.log("create_post is working")
+            t_id = $("#twitter_id").val()
+            console.log(t_id)
+            new_url = "/twitter_app/new_id/"
+            $.ajax({
+                type:"POST",
+                url :new_url,
+                data:{name:t_id,
+                    csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()},
+
+            })
+        }
+    </script>
+    {%endblock%}

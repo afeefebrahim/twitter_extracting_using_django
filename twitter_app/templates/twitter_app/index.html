@@ -1,0 +1,19 @@
+
+    {% extends "twitter_app/base.html" %}
+        {% block title %}Welcome to twitter!{% endblock %}
+        {% block body_block %}
+    
+    	
+        {%if twitter_id%}
+           {%for tweet in twitter_id%}
+            {{tweet}}
+            <a href="update/{{tweet.id}}/"> update</a>
+           <a href = "show/{{tweet.id}}/">view</a></br>	
+
+            {%endfor%}
+        {%else%}
+           <h3> no twitter_id is saved</h3>    
+        {%endif%} 
+
+    {% endblock %}
+                 
